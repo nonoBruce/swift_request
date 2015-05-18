@@ -36,6 +36,7 @@ class ViewController: UIViewController,HttpResultProtocol {
         println("abc")
     }
     
+    
     //MARK: - request delegate
     func requestFinishedSuccess(ctType:HttpCommunicationType, result:HttpCommunicationResult){
         println("success")
