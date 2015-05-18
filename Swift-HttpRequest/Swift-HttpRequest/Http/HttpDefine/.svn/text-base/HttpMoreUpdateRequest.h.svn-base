@@ -1,0 +1,15 @@
+//
+//  HttpMoreUpdateRequest.h
+//  XJMobilePhoneNewsPaper
+//
+//  Created by yanwsh on 1/14/14.
+//
+//
+
+#import <Foundation/Foundation.h>
+#import "HttpConnect.h"
+@interface HttpMoreUpdateRequest : HttpConnect
+-(id)initWithCommunication:(CommunicationType)cType
+                  delegate:(id<CommunicationDelegate>)delegate
+               requestData:(NSMutableDictionary *)dic;
+@end

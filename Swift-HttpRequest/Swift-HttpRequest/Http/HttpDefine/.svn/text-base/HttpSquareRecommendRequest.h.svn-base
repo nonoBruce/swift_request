@@ -1,0 +1,19 @@
+//
+//  HttpSquareRecommendRequest.h
+//  XJMobilePhoneNewsPaper
+//
+//  Created by yanwsh on 1/7/14.
+//
+//
+
+#import <Foundation/Foundation.h>
+#import "HttpConnect.h"
+#import "HttpCommunicationResult.h"
+
+@interface HttpSquareRecommendRequest : HttpConnect
+
+-(id)initWithCommunication:(CommunicationType)cType
+                  delegate:(id<CommunicationDelegate>)delegate
+               requestData:(NSMutableDictionary *)dic;
+
+@end

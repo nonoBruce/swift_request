@@ -1,0 +1,109 @@
+//
+//  HttpLoginRequest.m
+//  HttpDemo
+//
+//  Created by yanwen on 6/5/13.
+//  Copyright (c) 2013 __MyCompanyName__. All rights reserved.
+//
+
+#import "HttpLoginRequest.h"
+#import "HttpCommunicationResult.h"
+#import "HttpHeadUrl.h"
+#import "JSON.h"
+	
+@implementation HttpLoginRequest
+
+- (id)initWithCommunication:(CommunicationType)cType 
+                  delegate:(id<CommunicationDelegate>)delegate
+               requestData:(NSMutableDictionary *)dic{
+    
+    self = [super init];
+    if(nil != self){
+        
+    }
+    
+    [super initWithCommunication:cType delegate:delegate requestData:[self requestParam:dic]];
+    return self;
+    
+}
+
+- (NSMutableDictionary *)requestParam:(NSDictionary *)dic{
+    
+    NSMutableDictionary *data = [[[NSMutableDictionary alloc] initWithCapacity:0] autorelease];
+    
+    switch (_comType) {
+        case ctGetCode://获取验证码
+        {
+            [data setValue:@"IEUPService" forKey:@"service_name"];
+            [data setValue:@"addVerifyCode" forKey:@"operation_name"];
+        }
+            break;
+        case ctBinding:{//验证验证码
+            [data setValue:@"IEUPService" forKey:@"service_name"];
+            [data setValue:@"checkVerifyCode" forKey:@"operation_name"];
+        }
+            break;
+            
+        default:
+            break;
+    }
+    
+    [data setValue:[dic JSONFragment] forKey:@"content"];
+    NSMutableDictionary *request = [[[NSMutableDictionary alloc] initWithCapacity:0] autorelease];
+    [request setValue:data forKey:@"request"];
+    
+    //打印json字串
+    NSLog(@"JsonRequest : %@ \n",request);
+    
+    return request;
+}
+
+- (NSString *)request:(NSMutableDictionary *)dic{
+    NSString *url = [[[NSString alloc] initWithString:Url] autorelease];
+    return url;
+}
+
+-(NSObject *)parseData:(NSDictionary *)returnDic httpResult:(HttpCommunicationResult *)httpResult
+{
+    
+    NSLog(@"returnDic : %@",returnDic);
+    NSDictionary *response = [returnDic objectForKey:@"response"];
+    
+    switch (_comType) {
+        case ctGetCode:
+        {
+            NSString *response_code = [response objectForKey:@"response_code"];
+            httpResult.retrunData = response_code;
+            
+            return httpResult;
+        }
+            break;
+        case ctBinding:
+        {
+            int response_code = (int)[response objectForKey:@"response_code"];
+            if(response_code == 0)
+            {
+                NSLog(@"0000000");
+                NSString *content = [response objectForKey:@"content"];
+                NSDictionary *content_json = [content JSONValue];
+//                return [content_json objectForKey:@"output"];
+                
+                httpResult.retrunData = [content_json objectForKey:@"output"];
+            }
+            else 
+            {
+                NSLog(@"1111111");
+                httpResult.retrunData = @"1";
+            }
+            
+        }
+            break;
+            
+        default:
+            httpResult.retrunData =  @"0";
+            break;
+    }
+    
+    return httpResult;
+}
+@end

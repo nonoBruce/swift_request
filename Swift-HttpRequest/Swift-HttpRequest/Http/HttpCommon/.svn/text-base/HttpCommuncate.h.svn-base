@@ -1,0 +1,22 @@
+//
+//  HttpCommuncate.h
+//  HttpConection
+//
+//  Created by yanwsh on 1/4/14.
+//  Copyright (c) 2014 ict. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+#import "HttpCommuncationType.h"
+#import "HttpCommunicationResult.h"
+/*
+ http通讯服务，提供http服务访问的入口
+ */
+@interface HttpCommuncate : NSObject
+
+//do http communication by CommunicationType
+-(void)doHttpCommunication:(CommunicationType)cType delegate:(id<CommunicationDelegate>)delegate;
+
+//do http communication by CommunicationType and object param
+-(void)doHttpCommunicationWithObject:(CommunicationType)cType delegate:(id<CommunicationDelegate>)delegate object:(NSObject*)object;
+@end

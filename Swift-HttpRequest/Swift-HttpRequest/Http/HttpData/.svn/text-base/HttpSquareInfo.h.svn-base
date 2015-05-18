@@ -1,0 +1,19 @@
+//
+//  HttpSquareInfo.h
+//  XJMobilePhoneNewsPaper
+//
+//  Created by yanwsh on 10/9/13.
+//
+//
+
+#import <Foundation/Foundation.h>
+
+@interface HttpSquareInfo : NSObject
+
+@property(retain, nonatomic) NSString *actualIcon;
+@property(retain, nonatomic) NSString *categoryDesc;
+@property(retain, nonatomic) NSString *categoryId;
+@property(retain, nonatomic) NSString *categoryName;
+//@property(retain, nonatomic) NSString *iconId;
+//content子内容
+@end

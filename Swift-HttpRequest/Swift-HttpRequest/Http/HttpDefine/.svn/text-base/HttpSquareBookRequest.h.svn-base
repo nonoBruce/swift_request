@@ -1,0 +1,15 @@
+//
+//  HttpSquareBookRequest.h
+//  XJMobilePhoneNewsPaper
+//
+//  Created by yanwen on 2/27/14.
+//
+//
+
+#import "HttpConnect.h"
+
+@interface HttpSquareBookRequest : HttpConnect
+-(id)initWithCommunication:(CommunicationType)cType
+                  delegate:(id<CommunicationDelegate>)delegate
+               requestData:(NSMutableDictionary *)dic;
+@end

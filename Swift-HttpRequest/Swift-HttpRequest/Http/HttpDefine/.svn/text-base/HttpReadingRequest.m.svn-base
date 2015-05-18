@@ -1,0 +1,111 @@
+//
+//  HttpReadingRequest.m
+//  XJMobilePhoneNewsPaper
+//
+//  Created by yanwsh on 2/11/14.
+//
+//
+
+#import "HttpReadingRequest.h"
+#import "HttpCommunicationResult.h"
+#import "HttpHeadUrl.h"
+#import "JSON.h"
+#import "Magazine.h"
+#import "MagazineData.h"
+#import "SqliteStorage.h"
+#import "AppData.h"
+#import "AppDelegate.h"
+#import "HomeDataStorage.h"
+
+
+
+@implementation HttpReadingRequest
+-(id)initWithCommunication:(CommunicationType)cType delegate:(id<CommunicationDelegate>)delegate requestData:(NSMutableDictionary *)dic{
+    
+    self = [super init];
+    if(nil != self){
+        
+    }
+    [super initWithCommunication:cType delegate:delegate requestData:[self requestParam:dic]];
+    return self;
+    
+}
+
+- (NSMutableDictionary *)requestParam:(NSDictionary *)dic{
+    NSMutableDictionary *data = [[[NSMutableDictionary alloc] initWithCapacity:0] autorelease];
+    
+    [data setValue:@"GeneralPeriodicalService" forKey:@"service_name"];
+    [data setValue:@"queryContentList" forKey:@"operation_name"];
+    
+    [data setValue:[dic JSONFragment] forKey:@"content"];
+    NSMutableDictionary *request = [[[NSMutableDictionary alloc] initWithCapacity:0] autorelease];
+    [request setValue:data forKey:@"request"];
+    
+    //打印json字串
+    NSLog(@"JsonRequest : %@ \n",request);
+    
+    return request;
+}
+
+- (NSString *)request:(NSMutableDictionary *)dic{
+    NSString *url = [[[NSString alloc] initWithString:Url] autorelease];
+    return url;
+}
+
+-(NSObject *)parseData:(NSDictionary *)returnDic httpResult:(HttpCommunicationResult *)httpResult
+{
+    NSLog(@"returnDic : %@",returnDic);
+    NSDictionary *response = [returnDic objectForKey:@"response"];
+    
+    NSString *response_code = [response objectForKey:@"response_code"];
+    
+    if([response_code isEqualToString:@"0"])//成功
+    {
+        NSMutableArray *wholeDatas = [[[NSMutableArray alloc] initWithCapacity:0] autorelease];
+        NSString *content = [response objectForKey:@"content"];
+        NSDictionary *content_json = [content JSONValue];
+        NSDictionary *output = [content_json objectForKey:@"output"];
+        NSArray *messageArray = [output objectForKey:@"content"];//实际消息量
+        for (int i=0; i<[messageArray count]; i++) {
+            NSDictionary *message = [messageArray objectAtIndex:i];
+            NSString *content_type = [message objectForKey:@"content_type"];
+            NSString *title = [message objectForKey:@"title"];
+            if(title==nil||[title isKindOfClass:[NSNull class]])
+            {
+                title = @"";
+            }else;
+            HomeDataStorage *data = [[HomeDataStorage alloc] autorelease];
+            //issue_time 不使用
+            if(content_type!=nil&&[content_type isEqualToString:@"SMS"])//短信
+            {
+                data.content = [message objectForKey:@"content"];
+                data.content_type = @"SMS";
+            }
+            else if(content_type!=nil&&[content_type isEqualToString:@"MMS"])//彩信
+            {
+                NSDictionary *frames = [message objectForKey:@"frames"];
+                data.content = [frames JSONFragment];
+                data.content_type = @"MMS";
+            }
+            //构造数据
+            data.isChoice = NO;
+            data.isRead = NO;
+            data.isStored = NO;
+            data.mId = [message objectForKey:@"content_id"];
+            data.title = title;
+            data.logo = [message objectForKey:@"logo"];
+            data.pName = [message objectForKey:@"vap_name"];
+            data.pId = [message objectForKey:@"vap_id"];
+            [wholeDatas addObject:data];
+        }
+        httpResult.retrunData = wholeDatas;
+    }
+    else{//失败
+//        NSString *response_desc = [response objectForKey:@"response_desc"];
+//        httpResult.sysResultInfo = response_desc;
+        httpResult.sysResultInfo = @"请求异常，请重新尝试";
+    }
+    return httpResult;
+}
+
+@end

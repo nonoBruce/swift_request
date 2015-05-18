@@ -1,0 +1,63 @@
+//
+//  HttpMoreUpdateRequest.m
+//  XJMobilePhoneNewsPaper
+//
+//  Created by yanwsh on 1/14/14.
+//
+//
+
+#import "HttpMoreUpdateRequest.h"
+#import "JSON.h"
+#import "HttpCommunicationResult.h"
+#import "HttpHeadUrl.h"
+#import "HttpUpdateInfo.h"
+@implementation HttpMoreUpdateRequest
+-(id)initWithCommunication:(CommunicationType)cType
+                  delegate:(id<CommunicationDelegate>)delegate
+               requestData:(NSMutableDictionary *)dic{
+    self = [super init];
+    if(nil != self){
+    }
+    [super initWithCommunication:cType delegate:delegate requestData:[self requestParam:dic]];
+    return self;
+}
+
+#pragma mark 请求参数 设置
+- (NSMutableDictionary *)requestParam:(NSDictionary *)dic{
+//    //最里层
+//    NSString *contentstring = [dic JSONFragment];
+//    //次里层
+//    NSMutableDictionary *dataDic = [[[NSMutableDictionary alloc] initWithCapacity:0] autorelease];
+//    [dataDic setValue:contentstring forKey:@"content"];
+//    [dataDic setValue:@"cn.ict.starnet.obop.eup.def.IEUPService" forKey:@"service_name"];
+//    [dataDic setValue:@"addAdvice" forKey:@"operation_name"];
+//    //最外层
+//    NSMutableDictionary *requestDic = [[[NSMutableDictionary alloc] initWithCapacity:0] autorelease];
+//    [requestDic setValue:dataDic forKey:@"request"];
+    
+    return nil;
+}
+
+- (NSString *)request:(NSMutableDictionary *)dic{
+    NSString *url = [[[NSString alloc] initWithString:UpdateUrl] autorelease];
+    return url;
+}
+
+#pragma mark 对返回的结果解析
+-(HttpCommunicationResult *)parseData:(NSDictionary *)returnDic httpResult:(HttpCommunicationResult*)httpResult
+{
+    HttpUpdateInfo *updateInfo = [[[HttpUpdateInfo alloc] init] autorelease];
+    if(returnDic != nil){
+        NSArray *configData = [returnDic valueForKey:@"results"];
+       
+        for (id config in configData)
+        {
+            updateInfo.version = [config valueForKey:@"version"];
+        }
+    }
+    httpResult.retrunData = updateInfo;
+    return httpResult;
+}
+
+
+@end

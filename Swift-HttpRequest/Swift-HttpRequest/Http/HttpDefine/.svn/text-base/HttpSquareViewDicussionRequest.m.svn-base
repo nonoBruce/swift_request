@@ -1,0 +1,86 @@
+//
+//  HttpSquareViewDicussionRequest.m
+//  XJMobilePhoneNewsPaper
+//
+//  Created by yanwsh on 1/10/14.
+//
+//
+
+#import "HttpSquareViewDicussionRequest.h"
+#import "HttpSquareDiscussionInfo.h"
+#import "JSON.h"
+#import "HttpCommunicationResult.h"
+#import "HttpHeadUrl.h"
+@implementation HttpSquareViewDicussionRequest
+-(id)initWithCommunication:(CommunicationType)cType
+                  delegate:(id<CommunicationDelegate>)delegate
+               requestData:(NSMutableDictionary *)dic{
+    self = [super init];
+    if(nil != self){
+    }
+    [super initWithCommunication:cType delegate:delegate requestData:[self requestParam:dic]];
+    return self;
+}
+
+#pragma mark 请求参数 设置
+- (NSMutableDictionary *)requestParam:(NSDictionary *)dic{
+    //最里层
+    NSString *contentstring = [dic JSONFragment];
+    //次里层
+    NSMutableDictionary *dataDic = [[[NSMutableDictionary alloc] initWithCapacity:0] autorelease];
+    [dataDic setValue:contentstring forKey:@"content"];
+    [dataDic setValue:@"cn.ict.starnet.obop.eup.def.IEUPService" forKey:@"service_name"];
+    [dataDic setValue:@"queryComments" forKey:@"operation_name"];
+    //最外层
+    NSMutableDictionary *requestDic = [[[NSMutableDictionary alloc] initWithCapacity:0] autorelease];
+    [requestDic setValue:dataDic forKey:@"request"];
+    
+    return requestDic;
+}
+
+- (NSString *)request:(NSMutableDictionary *)dic{
+    NSString *url = [[[NSString alloc] initWithString:Url] autorelease];
+    return url;
+}
+
+#pragma mark 对返回的结果解析
+-(HttpCommunicationResult *)parseData:(NSDictionary *)returnDic httpResult:(HttpCommunicationResult*)httpResult
+{
+    NSLog(@"%@",returnDic);
+    NSString *responseDesc = nil;
+    NSMutableArray *returnArray = [[[NSMutableArray alloc] initWithCapacity:0] autorelease];
+    if(returnDic != nil){
+        NSDictionary *response = [returnDic objectForKey:@"response"];
+        if(response!=nil){
+            NSString *responseCode = [response objectForKey:@"response_code"];
+            if(responseCode!=nil && [responseCode isEqualToString:@"0"]){
+                NSString *responseContent = [response objectForKey:@"content"];
+                SBJSON *json = [[[SBJSON alloc] init] autorelease];
+                NSDictionary *dic = [json objectWithString:responseContent ];
+                NSDictionary *outputContent = [dic objectForKey:@"output"];
+                NSArray *recordsArray = [outputContent objectForKey:@"records"];
+                for(int i=0;i<recordsArray.count;i++){
+                    HttpSquareDiscussionInfo *discussionInfo = [[[HttpSquareDiscussionInfo alloc] init] autorelease];
+                    NSDictionary *object = [recordsArray objectAtIndex:i];
+                    discussionInfo.userPhoneNumber = [object objectForKey:@"user_nbr"];
+                    discussionInfo.discussionContent = [object objectForKey:@"comment_content"];
+                    discussionInfo.discussionTime = [object objectForKey:@"comment_time"];
+                    [returnArray addObject:discussionInfo];
+                }
+
+            }
+            else{
+//                responseDesc = [response objectForKey:@"response_desc"];
+                responseDesc = @"请求异常，请重新尝试";
+            }
+        }
+        else{
+            responseDesc = @"没有数据返回";
+        }
+        
+    }
+    httpResult.retrunData = returnArray;
+    httpResult.sysResultInfo = responseDesc;
+    return httpResult;
+}
+@end

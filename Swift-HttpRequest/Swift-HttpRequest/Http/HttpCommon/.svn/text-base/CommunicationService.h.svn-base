@@ -1,0 +1,20 @@
+//
+//  CommunicationService.h
+//  HttpConection
+//
+//  Created by yanwsh on 1/4/14.
+//  Copyright (c) 2014 ict. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+#import "HttpCommuncate.h"
+
+@interface CommunicationService : NSObject{
+    HttpCommuncate *_httpCommuncate;
+}
+
++ (CommunicationService*)shareInstance;
++ (HttpCommuncate*) getComService;
+
+@property (nonatomic, readonly) HttpCommuncate *httpCommuncate;
+@end

@@ -1,0 +1,15 @@
+//
+//  HttpReadingRequest.h
+//  XJMobilePhoneNewsPaper
+//
+//  Created by yanwsh on 2/11/14.
+//
+//
+
+#import "HttpConnect.h"
+
+@interface HttpReadingRequest : HttpConnect
+
+-(id)initWithCommunication:(CommunicationType)cType delegate:(id<CommunicationDelegate>)delegate requestData:(NSMutableDictionary *)dic;
+
+@end

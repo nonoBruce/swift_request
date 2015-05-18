@@ -1,0 +1,15 @@
+//
+//  HttpSquareOrderRankRequest.h
+//  XJMobilePhoneNewsPaper
+//
+//  Created by yanwsh on 1/7/14.
+//
+//
+
+#import "HttpConnect.h"
+
+@interface HttpSquareOrderRankRequest : HttpConnect
+-(id)initWithCommunication:(CommunicationType)cType
+                  delegate:(id<CommunicationDelegate>)delegate
+               requestData:(NSMutableDictionary *)dic;
+@end

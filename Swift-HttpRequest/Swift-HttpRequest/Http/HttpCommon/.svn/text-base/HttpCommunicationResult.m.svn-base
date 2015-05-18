@@ -1,0 +1,34 @@
+//
+//  HttpCommunicationResult.m
+//  HttpConection
+//
+//  Created by yanwsh on 1/4/14.
+//  Copyright (c) 2014 ict. All rights reserved.
+//
+
+#import "HttpCommunicationResult.h"
+
+@implementation HttpCommunicationResult
+
+@synthesize sysResultInfo=_sysResultInfo,retrunData=_retrunData;
+
+-(id)init{
+    self = [super init];
+    if(self!=nil){
+        _sysResultInfo = nil;
+    }
+    return self;
+}
+
+-(void)dealloc{
+    if(_sysResultInfo!=nil){
+        [_sysResultInfo release];
+        _sysResultInfo = nil;
+    }
+    if(_retrunData!=nil){
+        [_retrunData release];
+    }
+    [super dealloc];
+}
+
+@end

@@ -1,0 +1,15 @@
+//
+//  HttpMineOrderedRequest.h
+//  XJMobilePhoneNewsPaper
+//
+//  Created by yanwsh on 1/13/14.
+//
+//
+
+#import <Foundation/Foundation.h>
+#import "HttpConnect.h"
+@interface HttpMineOrderedRequest : HttpConnect
+-(id)initWithCommunication:(CommunicationType)cType
+                  delegate:(id<CommunicationDelegate>)delegate
+               requestData:(NSMutableDictionary *)dic;
+@end

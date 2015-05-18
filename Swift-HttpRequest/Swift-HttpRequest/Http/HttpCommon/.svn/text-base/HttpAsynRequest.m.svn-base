@@ -1,0 +1,78 @@
+//
+//  HttpAsynRequest.m
+//  HttpConection
+//
+//  Created by yanwsh on 1/4/14.
+//  Copyright (c) 2014 ict. All rights reserved.
+//
+
+#import "HttpAsynRequest.h"
+
+@interface HttpAsynRequest ()<NSURLConnectionDataDelegate>{
+    NSURLConnection* _connection;
+	NSMutableData* _httpData;
+}
+@end
+@implementation HttpAsynRequest
+@synthesize delegate = _delegate;
+
+////----
+-(void)loadHttpData:(NSURLRequest*)request delegate:(id<HttpAsyncDelegate>)obj{
+    _delegate = obj;////－－－－这个赋值是确保下面的协议函数可以被调用
+    _connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    if(nil == _connection){
+        return;
+    }
+}
+
+
+
+- (void)resetRequest{
+    if(_connection != nil){
+        NSLog(@"cancel connection");
+        [_connection cancel];
+        [_connection release];
+        _connection = nil;
+    }
+}
+- (void)dealloc{
+    [self resetRequest];
+    [super dealloc];
+}
+- (void)httpRequest:(NSMutableURLRequest *)request{
+    
+}
+
+////----NSConnection的协议
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+    NSLog(@"建立请求链接");
+}
+
+-(void)connection:(NSURLConnection*) urlCon didReceiveData:(NSData*)incrementalData{
+    NSLog(@"数据请求开始返回数据");
+    if(_httpData == nil)
+	{
+		_httpData = [[NSMutableData alloc] init];
+	}
+	[_httpData appendData:incrementalData];
+}
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error{
+    NSLog(@"数据请求返回失败");
+	if (self.delegate && [(id)self.delegate respondsToSelector:@selector(LoadAsyncError:error:)])
+	{
+		[self.delegate LoadAsyncError:connection error:error];
+	}
+    [self resetRequest];
+}
+
+-(void) connectionDidFinishLoading:(NSURLConnection *)connection{
+    NSLog(@"数据请求返回成功");
+    if (self.delegate && [(id)self.delegate respondsToSelector:@selector(onAsyncFinished:data:)])
+	{
+		[self.delegate onAsyncFinished:connection data:_httpData];
+	}
+    [self resetRequest];
+}
+
+@end

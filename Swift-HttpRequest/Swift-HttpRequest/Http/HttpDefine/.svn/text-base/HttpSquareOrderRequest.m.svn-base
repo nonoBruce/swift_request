@@ -1,0 +1,76 @@
+
+//
+//  HttpSquareOrderRequest.m
+//  XJMobilePhoneNewsPaper
+//
+//  Created by yanwsh on 1/13/14.
+//
+//
+
+#import "HttpSquareOrderRequest.h"
+#import "JSON.h"
+#import "HttpCommunicationResult.h"
+#import "HttpHeadUrl.h"
+
+@implementation HttpSquareOrderRequest
+-(id)initWithCommunication:(CommunicationType)cType
+                  delegate:(id<CommunicationDelegate>)delegate
+               requestData:(NSMutableDictionary *)dic{
+    self = [super init];
+    if(nil != self){
+    }
+    [super initWithCommunication:cType delegate:delegate requestData:[self requestParam:dic]];
+    return self;
+}
+
+#pragma mark 请求参数 设置
+- (NSMutableDictionary *)requestParam:(NSDictionary *)dic{
+    //最里层
+    NSString *contentstring = [dic JSONFragment];
+    //次里层
+    NSMutableDictionary *dataDic = [[[NSMutableDictionary alloc] initWithCapacity:0] autorelease];
+    [dataDic setValue:contentstring forKey:@"content"];
+    [dataDic setValue:@"cn.ict.starnet.obop.order.def.IOrderService" forKey:@"service_name"];
+    [dataDic setValue:@"subscribe" forKey:@"operation_name"];
+    //最外层
+    NSMutableDictionary *requestDic = [[[NSMutableDictionary alloc] initWithCapacity:0] autorelease];
+    [requestDic setValue:dataDic forKey:@"request"];
+    
+    return requestDic;
+}
+
+- (NSString *)request:(NSMutableDictionary *)dic{
+    NSString *url = [[[NSString alloc] initWithString:Url] autorelease];
+    return url;
+}
+
+#pragma mark 对返回的结果解析
+-(HttpCommunicationResult *)parseData:(NSDictionary *)returnDic httpResult:(HttpCommunicationResult*)httpResult
+{
+    NSString *responseDesc = nil;
+    NSString *flagString = nil;
+    if(returnDic != nil){
+        NSDictionary *response = [returnDic objectForKey:@"response"];
+        if(response!=nil){
+            NSString *responseCode = [response objectForKey:@"response_code"];
+            if(responseCode!=nil && [responseCode isEqualToString:@"0"]){
+                flagString = @"1";//表示成功
+                responseDesc = [response objectForKey:@"response_desc"];
+            }
+            else{
+                responseDesc = [response objectForKey:@"response_desc"];
+                if(responseDesc ==nil || ![responseDesc isEqualToString:@"订购关系已存在,订购处理中"]){
+                    responseDesc = @"订购请求失败";
+                }
+            }
+        }
+        else{
+            responseDesc = @"订购请求失败";
+        }
+        
+    }
+    httpResult.retrunData = flagString;
+    httpResult.sysResultInfo = responseDesc;
+    return httpResult;
+}
+@end

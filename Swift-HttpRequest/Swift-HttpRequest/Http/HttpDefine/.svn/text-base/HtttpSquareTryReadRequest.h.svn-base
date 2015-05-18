@@ -1,0 +1,15 @@
+//
+//  HtttpSquareTryReadRequest.h
+//  XJMobilePhoneNewsPaper
+//
+//  Created by yanws on 1/29/14.
+//
+//
+
+#import "HttpConnect.h"
+
+@interface HtttpSquareTryReadRequest : HttpConnect
+-(id)initWithCommunication:(CommunicationType)cType
+                  delegate:(id<CommunicationDelegate>)delegate
+               requestData:(NSMutableDictionary *)dic;
+@end

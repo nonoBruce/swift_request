@@ -1,0 +1,13 @@
+//
+//  HttpUpdateInfo.h
+//  XJMobilePhoneNewsPaper
+//
+//  Created by yanwsh on 1/14/14.
+//
+//
+
+#import <Foundation/Foundation.h>
+
+@interface HttpUpdateInfo : NSObject
+@property(retain, nonatomic) NSString *version;
+@end

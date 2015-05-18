@@ -1,0 +1,121 @@
+//
+//  HtttpSquareTryReadRequest.m
+//  XJMobilePhoneNewsPaper
+//
+//  Created by yanws on 1/29/14.
+//
+//
+
+#import "HtttpSquareTryReadRequest.h"
+#import "HttpCommunicationResult.h"
+#import "HttpHeadUrl.h"
+#import "JSON.h"
+#import "Magazine.h"
+#import "MagazineData.h"
+#import "SqliteStorage.h"
+#import "AppData.h"
+#import "AppDelegate.h"
+#import "HomeDataStorage.h"
+
+@implementation HtttpSquareTryReadRequest
+
+-(id)initWithCommunication:(CommunicationType)cType delegate:(id<CommunicationDelegate>)delegate requestData:(NSMutableDictionary *)dic{
+    
+    self = [super init];
+    if(nil != self){
+        
+    }
+    
+    [super initWithCommunication:cType delegate:delegate requestData:[self requestParam:dic]];
+    return self;
+    
+}
+
+- (NSMutableDictionary *)requestParam:(NSDictionary *)dic{
+    NSMutableDictionary *data = [[[NSMutableDictionary alloc] initWithCapacity:0] autorelease];
+    
+    [data setValue:@"cn.ict.starnet.obop.eup.def.IEUPService" forKey:@"service_name"];
+    [data setValue:@"tryReadVapContent" forKey:@"operation_name"];
+    
+    [data setValue:[dic JSONFragment] forKey:@"content"];
+    NSMutableDictionary *request = [[[NSMutableDictionary alloc] initWithCapacity:0] autorelease];
+    [request setValue:data forKey:@"request"];
+    return request;
+}
+
+- (NSString *)request:(NSMutableDictionary *)dic{
+    NSString *url = [[[NSString alloc] initWithString:Url] autorelease];
+    return url;
+}
+
+-(NSObject *)parseData:(NSDictionary *)returnDic httpResult:(HttpCommunicationResult *)httpResult{
+    NSDictionary *response = [returnDic objectForKey:@"response"];
+    NSString *response_code = [response objectForKey:@"response_code"];
+    if([response_code isEqualToString:@"0"]){//成功
+        NSString *content = [response objectForKey:@"content"];
+        NSDictionary *content_json = [content JSONValue];
+        NSDictionary *output = [content_json objectForKey:@"output"];
+        if(output!=nil && ![output isKindOfClass:[NSNull class]]){
+            NSArray *messageArray = [output objectForKey:@"content"];//实际消息量
+            for (int i=0; i<[messageArray count]; i++) {//实际只会返回一个数据
+                NSDictionary *message = [messageArray objectAtIndex:i];
+                NSString *content_type = [message objectForKey:@"content_type"];
+                NSString *title = [message objectForKey:@"title"];
+                if(title==nil||[title isKindOfClass:[NSNull class]])
+                {
+                    title = @"";
+                }
+                NSString *vap_id = [message objectForKey:@"vap_id"];
+                NSString *content_id = [message objectForKey:@"content_id"];
+                NSString *productTitle = [message objectForKey:@"vap_name"];
+                NSString *productLogo = [message objectForKey:@"logo"];
+                NSDictionary *frames = [message objectForKey:@"frames"];
+                NSString *text = [frames JSONFragment];
+                MagazineData *magazie = [[[MagazineData alloc]init] autorelease];
+                magazie.content = text;
+                magazie.pId = vap_id;
+                magazie.mId = content_id;
+                magazie.title = title;
+                //issue_time 不使用
+                magazie.isRead = NO;
+                if(content_type!=nil&&[content_type isEqualToString:@"SMS"])//短信
+                {
+                    magazie.content_type = @"SMS";
+                    magazie.content = [message objectForKey:@"content"];
+                }
+                else if(content_type!=nil&&[content_type isEqualToString:@"MMS"])//彩信
+                {
+                    magazie.content_type = @"MMS";
+                }
+                magazie.logo = productLogo;
+                magazie.pName = productTitle;
+                
+                //构造数据
+                HomeDataStorage *data = [[HomeDataStorage alloc] autorelease];
+                data.isChoice = NO;
+                data.content = magazie.content;
+                data.content_type = magazie.content_type;
+                data.isRead = magazie.isRead;
+                data.mId = magazie.mId;
+                data.title = magazie.title;
+                data.logo = magazie.logo;
+                data.pName = magazie.pName;
+                data.pId = magazie.pId;
+               httpResult.retrunData = data;//返回全部结果
+            }
+            
+        }
+        else{
+//             httpResult.sysResultInfo = [response objectForKey:@"response_desc"];
+            httpResult.sysResultInfo = @"请求异常，请重新尝试";
+        }
+    }
+    else
+    {//失败
+        httpResult.sysResultInfo = [response objectForKey:@"response_desc"];
+    }
+    return httpResult;
+}
+
+
+@end

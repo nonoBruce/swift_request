@@ -1,0 +1,20 @@
+//
+//  HttpVapInfo.h
+//  XJMobilePhoneNewsPaper
+//
+//  Created by yanwsh on 1/7/14.
+//
+//
+
+#import <Foundation/Foundation.h>
+
+@interface HttpVapInfo : NSObject
+
+@property(retain, nonatomic) NSString *vapId;
+@property(retain, nonatomic) NSString *vapName;
+@property(retain, nonatomic) NSString *vapDesc;//业务简介
+@property(retain, nonatomic) NSString *actualLogo;
+@property(retain, nonatomic) NSString *feeDesc;//资费说明
+@property(retain, nonatomic) NSString *issuedesc;//发布周期
+@property(retain, nonatomic) NSString *orderDesc;//定制方式
+@end

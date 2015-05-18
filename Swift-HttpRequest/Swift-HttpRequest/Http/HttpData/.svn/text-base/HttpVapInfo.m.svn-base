@@ -1,0 +1,24 @@
+//
+//  HttpVapInfo.m
+//  XJMobilePhoneNewsPaper
+//
+//  Created by yanwsh on 1/7/14.
+//
+//
+#define SafeRelease(x) if( nil != x ) { [x release]; x = nil; }
+#import "HttpVapInfo.h"
+
+@implementation HttpVapInfo
+@synthesize vapId,vapName,vapDesc,actualLogo,feeDesc,issuedesc,orderDesc;
+
+-(void)dealloc{
+    SafeRelease(vapId);
+    SafeRelease(vapName);
+    SafeRelease(vapDesc);
+    SafeRelease(actualLogo);
+    SafeRelease(feeDesc);
+    SafeRelease(issuedesc);
+    SafeRelease(orderDesc);
+    [super dealloc];
+}
+@end

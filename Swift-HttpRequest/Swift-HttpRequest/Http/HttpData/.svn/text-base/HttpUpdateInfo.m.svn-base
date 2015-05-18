@@ -1,0 +1,18 @@
+//
+//  HttpUpdateInfo.m
+//  XJMobilePhoneNewsPaper
+//
+//  Created by yanwsh on 1/14/14.
+//
+//
+
+#import "HttpUpdateInfo.h"
+#import "AppData.h"
+@implementation HttpUpdateInfo
+@synthesize version;
+-(void)dealloc{
+    SafeRelease(version);
+    [super dealloc];
+}
+
+@end

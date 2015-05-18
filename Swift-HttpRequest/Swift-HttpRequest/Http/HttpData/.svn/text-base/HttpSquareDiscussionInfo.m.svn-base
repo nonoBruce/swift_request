@@ -1,0 +1,19 @@
+//
+//  HttpSquareDiscussionInfo.m
+//  XJMobilePhoneNewsPaper
+//
+//  Created by yanwsh on 1/10/14.
+//
+//
+
+#import "HttpSquareDiscussionInfo.h"
+#import "AppData.h"
+@implementation HttpSquareDiscussionInfo
+@synthesize discussionTime,discussionContent,userPhoneNumber;
+-(void)dealloc{
+    SafeRelease(userPhoneNumber);
+    SafeRelease(discussionContent);
+    SafeRelease(discussionTime);
+    [super dealloc];
+}
+@end

@@ -1,0 +1,53 @@
+//
+//  HttpConnect.h
+//  HttpConection
+//
+//  Created by yanwsh on 1/4/14.
+//  Copyright (c) 2014 ict. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+#import "HttpAsynRequest.h"
+#import "HttpCommunicationResult.h"
+#import "HttpCommuncationType.h"
+
+@class HttpConnect;
+@protocol HttpConnectDelegate<NSObject>
+
+@optional
+
+-(void)didAsyncFinish:(HttpConnect*)connect;
+
+@end
+
+
+
+@interface HttpConnect : NSObject<HttpAsyncDelegate>{
+    id<CommunicationDelegate> _comDelegate;
+    id<HttpConnectDelegate> _connectDelegate;
+    CommunicationType _comType;
+}
+@property(nonatomic, assign) id<HttpConnectDelegate> connectDelegate;
+
+- (void)httpRequest:(NSString *)url requestData:(NSMutableDictionary *)dic;
+
+////----数据请求结构数据
+//- (void)doComDelegate;
+- (void)doComDelegateWithObject:(HttpCommunicationResult*)object;
+- (void)doComFailDelegate:(HttpCommunicationResult*)result error:(NSError *)error;
+
+////----数据请求
+- (NSObject *)parseData:(NSDictionary *)returnDic httpResult:(HttpCommunicationResult*)httpResult;
+
+
+//////----被子类继承时用到的函数
+- (id)initWithCommunication:(CommunicationType)cType
+                   delegate:(id<CommunicationDelegate>)delegate
+                requestData:(NSMutableDictionary *)dic;
+
+- (NSString *)request:(NSMutableDictionary *)dic;
+
+
+@end
+
+

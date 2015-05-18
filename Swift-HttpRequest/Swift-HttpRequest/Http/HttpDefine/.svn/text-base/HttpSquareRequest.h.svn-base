@@ -1,0 +1,17 @@
+//
+//  HttpSquareRequest.h
+//  XJMobilePhoneNewsPaper
+//
+//  Created by yanwsh on 10/8/13.
+//
+//
+
+#import <Foundation/Foundation.h>
+#import "HttpConnect.h"
+@interface HttpSquareRequest : HttpConnect
+
+-(id)initWithCommunication:(CommunicationType)cType
+                  delegate:(id<CommunicationDelegate>)delegate
+               requestData:(NSMutableDictionary *)dic;
+
+@end

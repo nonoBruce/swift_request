@@ -1,0 +1,22 @@
+//
+//  HttpSquareInfo.m
+//  XJMobilePhoneNewsPaper
+//
+//  Created by yanwsh on 10/9/13.
+//
+//
+
+#define SafeRelease(x) if( nil != x ) { [x release]; x = nil; }
+#import "HttpSquareInfo.h"
+@implementation HttpSquareInfo
+@synthesize actualIcon,categoryDesc,categoryId,categoryName;
+
+- (void)dealloc{
+    SafeRelease(actualIcon);
+    SafeRelease(categoryDesc);
+    SafeRelease(categoryId);
+    SafeRelease(categoryName);
+    [super dealloc];
+}
+
+@end

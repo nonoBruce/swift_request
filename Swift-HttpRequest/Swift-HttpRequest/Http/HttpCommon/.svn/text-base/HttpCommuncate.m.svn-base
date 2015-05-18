@@ -1,0 +1,135 @@
+//
+//  HttpCommuncate.m
+//  HttpConection
+//
+//  Created by yanwsh on 1/4/14.
+//  Copyright (c) 2014 ict. All rights reserved.
+//
+
+#import "HttpCommuncate.h"
+#import "HttpConnect.h"
+#import "HttpSquareRequest.h"
+#import "HttpSquareRecommendRequest.h"
+#import "HttpSquareOrderRankRequest.h"
+#import "HttpSquareVapHasOrderedRequest.h"
+#import "HttpSquareSendDiscussionRequest.h"
+#import "HttpSquareViewDicussionRequest.h"
+#import "HttpSquareCancelVap.h"
+#import "HttpSquareOrderRequest.h"
+#import "HttpMineOrderedRequest.h"
+#import "HttpMoreFeedBackRequest.h"
+#import "HttpMoreUpdateRequest.h"
+#import "HttpHomeGetMagazine.h"
+#import "HtttpSquareTryReadRequest.h"
+#import "HttpReadingRequest.h"
+#import "HttpGetVerifyCodeRequest.h"
+#import "HttpVerifyCodeRequest.h"
+#import "HttpSquareBookRequest.h"
+
+@interface HttpCommuncate()<HttpConnectDelegate>
+
+@end
+
+@implementation HttpCommuncate
+
+#pragma mark  do http communication by CommunicationType
+-(void)doHttpCommunication:(CommunicationType)cType delegate:(id<CommunicationDelegate>)delegate{
+    [self doHttpCommunicationWithObject:cType delegate:delegate object:nil];
+}
+
+#pragma mark do http communication by CommunicationType and object param
+-(void)doHttpCommunicationWithObject:(CommunicationType)cType delegate:(id<CommunicationDelegate>)delegate object:(NSObject*)object{
+    HttpConnect* connection = nil;
+    switch (cType) {
+        case ctLogin:{
+//            connection = [[HttpLoginRequest alloc] initWithCommunication:ctLogin delegate:delegate requestData:(NSMutableDictionary*)object];
+            break;
+        }
+            
+        case ctSquare:{
+            connection = [[HttpSquareRequest alloc] initWithCommunication:ctSquare delegate:delegate requestData:(NSMutableDictionary*)object];
+            break;
+        }
+        case ctSquareRecommend:{
+            connection = [[HttpSquareRecommendRequest alloc] initWithCommunication:ctSquareRecommend delegate:delegate requestData:(NSMutableDictionary*)object];
+            break;
+        }
+        case ctSquareOrderRand:{
+            connection = [[HttpSquareOrderRankRequest alloc] initWithCommunication:ctSquareOrderRand delegate:delegate requestData:(NSMutableDictionary*)object];
+            break;
+        }
+        case ctSquareBook:{
+            connection = [[HttpSquareBookRequest alloc] initWithCommunication:ctSquareBook delegate:delegate requestData:(NSMutableDictionary*)object];
+            break;
+        }
+        case ctVapHasOrdered:{
+            connection = [[HttpSquareVapHasOrderedRequest alloc] initWithCommunication:ctVapHasOrdered delegate:delegate requestData:(NSMutableDictionary*)object];
+            break;
+        }
+        case ctSquareSendDiscussion:{
+            connection = [[HttpSquareSendDiscussionRequest alloc] initWithCommunication:ctSquareSendDiscussion delegate:delegate requestData:(NSMutableDictionary*)object];
+            break;
+        }
+        case ctSquareViewDiscussion:{
+            connection = [[HttpSquareViewDicussionRequest alloc] initWithCommunication:ctSquareViewDiscussion delegate:delegate requestData:(NSMutableDictionary*)object];
+            break;
+        }
+        case ctSquareCancelVap:{
+            connection = [[HttpSquareCancelVap alloc] initWithCommunication:ctSquareCancelVap delegate:delegate requestData:(NSMutableDictionary*)object];
+            break;
+        }
+        case ctSquareOrderVap:{
+            connection = [[HttpSquareOrderRequest alloc] initWithCommunication:ctSquareOrderVap delegate:delegate requestData:(NSMutableDictionary*)object];
+            break;
+        }
+        case ctUserOrdered:{
+            connection = [[HttpMineOrderedRequest alloc] initWithCommunication:ctUserOrdered delegate:delegate requestData:(NSMutableDictionary*)object];
+            break;
+        }
+        case ctMoreFeedBack:{
+            connection = [[HttpMoreFeedBackRequest alloc] initWithCommunication:ctMoreFeedBack delegate:delegate requestData:(NSMutableDictionary*)object];
+            break;
+        }
+        case ctMoreUpdate:{
+            connection = [[HttpMoreUpdateRequest alloc] initWithCommunication:ctMoreUpdate delegate:delegate requestData:(NSMutableDictionary*)object];
+            break;
+        }
+        case ctHomeGetInfo:{
+            connection = [[HttpHomeGetMagazine alloc] initWithCommunication:ctHomeGetInfo delegate:delegate requestData:(NSMutableDictionary*)object];
+            break;
+        }
+        case ctSquareTryRead:{
+            connection = [[HtttpSquareTryReadRequest alloc] initWithCommunication:ctSquareTryRead delegate:delegate requestData:(NSMutableDictionary*)object];
+            break;
+        }
+        case ctReading:{
+            connection = [[HttpReadingRequest alloc] initWithCommunication:ctReading delegate:delegate requestData:(NSMutableDictionary*)object];
+            break;
+        }
+        case ctGetCode:{
+            connection = [[HttpGetVerifyCodeRequest alloc] initWithCommunication:ctGetCode delegate:delegate requestData:(NSMutableDictionary*)object];
+            break;
+        }
+        case ctBinding:{
+            connection = [[HttpVerifyCodeRequest alloc] initWithCommunication:ctBinding delegate:delegate requestData:(NSMutableDictionary*)object];
+            break;
+        }
+            
+        default:
+            break;
+    }
+    
+    if(connection!=nil){
+        connection.connectDelegate = self;
+    }
+}
+
+#pragma mark 释放httpRequest的内存
+
+-(void)didAsyncFinish:(HttpConnect *)connect{
+    if(connect!=nil){
+        [connect release];
+    }
+}
+
+@end

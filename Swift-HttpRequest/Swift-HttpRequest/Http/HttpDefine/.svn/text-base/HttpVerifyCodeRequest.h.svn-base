@@ -1,0 +1,18 @@
+//
+//  HttpVerifyCodeRequest.h
+//  XJMobilePhoneNewsPaper
+//
+//  Created by yanwsh on 2/11/14.
+//
+//
+
+#pragma mark 验证验证码
+#import "HttpConnect.h"
+
+@interface HttpVerifyCodeRequest : HttpConnect
+
+-(id)initWithCommunication:(CommunicationType)cType
+                  delegate:(id<CommunicationDelegate>)delegate
+               requestData:(NSMutableDictionary *)dic;
+
+@end

@@ -1,0 +1,18 @@
+//
+//  HttpHomeGetMagazine.h
+//  XJMobilePhoneNewsPaper
+//
+//  Created by zhang xinjin on 14-1-8.
+//
+//
+
+#import "HttpConnect.h"
+/**
+ * 首页获取总的杂志信息
+ */
+@interface HttpHomeGetMagazine : HttpConnect{
+    
+}
+
+- (NSMutableDictionary *)requestParam:(NSDictionary *)dic;
+@end

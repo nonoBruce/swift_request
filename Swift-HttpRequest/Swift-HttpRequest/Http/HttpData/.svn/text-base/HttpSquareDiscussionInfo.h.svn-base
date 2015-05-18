@@ -1,0 +1,17 @@
+//
+//  HttpSquareDiscussionInfo.h
+//  XJMobilePhoneNewsPaper
+//
+//  Created by yanwsh on 1/10/14.
+//
+//
+
+#import <Foundation/Foundation.h>
+
+@interface HttpSquareDiscussionInfo : NSObject
+
+@property(retain, nonatomic) NSString *userPhoneNumber;
+@property(retain, nonatomic) NSString *discussionContent;
+@property(retain, nonatomic) NSString *discussionTime;
+
+@end

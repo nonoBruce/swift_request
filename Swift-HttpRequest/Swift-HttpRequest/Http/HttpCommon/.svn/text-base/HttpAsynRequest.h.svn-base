@@ -1,0 +1,30 @@
+//
+//  HttpAsynRequest.h
+//  HttpConection
+//
+//  Created by yanwsh on 1/4/14.
+//  Copyright (c) 2014 ict. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
+/*异步请求协议*/
+@protocol HttpAsyncDelegate
+
+@optional
+////----两个可选函数，用于响应请求成功或者失败的情况
+- (void) onAsyncFinished:(NSURLConnection*)strUrl data:(NSMutableData*) finshData;
+- (void) LoadAsyncError:(NSURLConnection*)strUrl error:(NSError *)error;
+
+@end
+
+
+
+@interface HttpAsynRequest : NSObject
+@property(retain, nonatomic) id<HttpAsyncDelegate>delegate;
+
+////----请求函数，用于发送nsconnection函数
+-(void)loadHttpData:(NSURLRequest*)request delegate:(id<HttpAsyncDelegate>)obj;
+//- (void)httpRequest:(NSMutableURLRequest *)request;
+
+@end

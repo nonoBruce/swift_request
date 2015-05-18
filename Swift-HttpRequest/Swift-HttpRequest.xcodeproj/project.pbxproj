@@ -1,0 +1,562 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5C96968F73FF2A53FB6B431F /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6875DF6FBE9699E9C327B010 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		7DCAE65B1AF875950050FB18 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DCAE6581AF875950050FB18 /* AppDelegate.swift */; };
+		7DCAE65C1AF875950050FB18 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DCAE65A1AF875950050FB18 /* ViewController.swift */; };
+		7DDAD3201AF70BC600DF581A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DDAD31F1AF70BC600DF581A /* Default-568h@2x.png */; };
+		7DDAD32B1AF713DD00DF581A /* HttpConnect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DDAD32A1AF713DD00DF581A /* HttpConnect.swift */; };
+		7DDAD3311AF7566100DF581A /* HttpLoginInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DDAD3301AF7566100DF581A /* HttpLoginInfo.swift */; };
+		7DDAD3331AF7573E00DF581A /* HttpCommunication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DDAD3321AF7573E00DF581A /* HttpCommunication.swift */; };
+		7DDAD3361AF75E0C00DF581A /* HttpLoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DDAD3351AF75E0C00DF581A /* HttpLoginRequest.swift */; };
+		7DE058431AF5669400E9EB07 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7DE058421AF5669400E9EB07 /* Images.xcassets */; };
+		7DE058521AF5669400E9EB07 /* Swift_HttpRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DE058511AF5669400E9EB07 /* Swift_HttpRequestTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7DE0584C1AF5669400E9EB07 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7DE0582E1AF5669400E9EB07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7DE058351AF5669400E9EB07;
+			remoteInfo = "Swift-HttpRequest";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		303F50B5E53E1C2452BA02DC /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		6875DF6FBE9699E9C327B010 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7DCAE6581AF875950050FB18 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		7DCAE65A1AF875950050FB18 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7DCAE6601AF8B0EE0050FB18 /* HttpHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HttpHeader.h; path = "Swift-HttpRequest/Http/HttpCommon/HttpHeader.h"; sourceTree = SOURCE_ROOT; };
+		7DDAD31F1AF70BC600DF581A /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		7DDAD32A1AF713DD00DF581A /* HttpConnect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HttpConnect.swift; path = "Swift-HttpRequest/Http/HttpCommon/HttpConnect.swift"; sourceTree = SOURCE_ROOT; };
+		7DDAD3301AF7566100DF581A /* HttpLoginInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HttpLoginInfo.swift; path = "Swift-HttpRequest/Http/HttpCommon/HttpLoginInfo.swift"; sourceTree = SOURCE_ROOT; };
+		7DDAD3321AF7573E00DF581A /* HttpCommunication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HttpCommunication.swift; path = "Swift-HttpRequest/Http/HttpCommon/HttpCommunication.swift"; sourceTree = SOURCE_ROOT; };
+		7DDAD3351AF75E0C00DF581A /* HttpLoginRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HttpLoginRequest.swift; path = "Swift-HttpRequest/Http/HttpCommon/HttpLoginRequest.swift"; sourceTree = SOURCE_ROOT; };
+		7DE058361AF5669400E9EB07 /* Swift-HttpRequest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Swift-HttpRequest.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7DE0583A1AF5669400E9EB07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7DE058421AF5669400E9EB07 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		7DE0584B1AF5669400E9EB07 /* Swift-HttpRequestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Swift-HttpRequestTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7DE058501AF5669400E9EB07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7DE058511AF5669400E9EB07 /* Swift_HttpRequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swift_HttpRequestTests.swift; sourceTree = "<group>"; };
+		9C490866C0632508014D9CB2 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7DE058331AF5669400E9EB07 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5C96968F73FF2A53FB6B431F /* Pods.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7DE058481AF5669400E9EB07 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		23C2856776052DBC4DF57C46 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6875DF6FBE9699E9C327B010 /* Pods.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7DCAE6571AF875950050FB18 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7DCAE6581AF875950050FB18 /* AppDelegate.swift */,
+				7DCAE6591AF875950050FB18 /* ViewController */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7DCAE6591AF875950050FB18 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7DCAE65A1AF875950050FB18 /* ViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		7DDAD3231AF70D0600DF581A /* Http */ = {
+			isa = PBXGroup;
+			children = (
+				7DDAD3271AF7130200DF581A /* HttpCommon */,
+				7DDAD3281AF7130200DF581A /* HttpData */,
+				7DDAD3291AF7130200DF581A /* HttpDefine */,
+			);
+			path = Http;
+			sourceTree = SOURCE_ROOT;
+		};
+		7DDAD3241AF70D0600DF581A /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utility;
+			sourceTree = SOURCE_ROOT;
+		};
+		7DDAD3271AF7130200DF581A /* HttpCommon */ = {
+			isa = PBXGroup;
+			children = (
+				7DCAE6601AF8B0EE0050FB18 /* HttpHeader.h */,
+				7DDAD3321AF7573E00DF581A /* HttpCommunication.swift */,
+				7DDAD32A1AF713DD00DF581A /* HttpConnect.swift */,
+			);
+			path = HttpCommon;
+			sourceTree = "<group>";
+		};
+		7DDAD3281AF7130200DF581A /* HttpData */ = {
+			isa = PBXGroup;
+			children = (
+				7DDAD3301AF7566100DF581A /* HttpLoginInfo.swift */,
+			);
+			path = HttpData;
+			sourceTree = "<group>";
+		};
+		7DDAD3291AF7130200DF581A /* HttpDefine */ = {
+			isa = PBXGroup;
+			children = (
+				7DDAD3351AF75E0C00DF581A /* HttpLoginRequest.swift */,
+			);
+			path = HttpDefine;
+			sourceTree = "<group>";
+		};
+		7DE0582D1AF5669400E9EB07 = {
+			isa = PBXGroup;
+			children = (
+				7DE058381AF5669400E9EB07 /* Swift-HttpRequest */,
+				7DE0584E1AF5669400E9EB07 /* Swift-HttpRequestTests */,
+				7DE058371AF5669400E9EB07 /* Products */,
+				EDD2AA92024C0C33FBEBA5C9 /* Pods */,
+				23C2856776052DBC4DF57C46 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		7DE058371AF5669400E9EB07 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7DE058361AF5669400E9EB07 /* Swift-HttpRequest.app */,
+				7DE0584B1AF5669400E9EB07 /* Swift-HttpRequestTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7DE058381AF5669400E9EB07 /* Swift-HttpRequest */ = {
+			isa = PBXGroup;
+			children = (
+				7DDAD3231AF70D0600DF581A /* Http */,
+				7DDAD3241AF70D0600DF581A /* Utility */,
+				7DCAE6571AF875950050FB18 /* View */,
+				7DE058421AF5669400E9EB07 /* Images.xcassets */,
+				7DE058391AF5669400E9EB07 /* Supporting Files */,
+			);
+			path = "Swift-HttpRequest";
+			sourceTree = "<group>";
+		};
+		7DE058391AF5669400E9EB07 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7DDAD31F1AF70BC600DF581A /* Default-568h@2x.png */,
+				7DE0583A1AF5669400E9EB07 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7DE0584E1AF5669400E9EB07 /* Swift-HttpRequestTests */ = {
+			isa = PBXGroup;
+			children = (
+				7DE058511AF5669400E9EB07 /* Swift_HttpRequestTests.swift */,
+				7DE0584F1AF5669400E9EB07 /* Supporting Files */,
+			);
+			path = "Swift-HttpRequestTests";
+			sourceTree = "<group>";
+		};
+		7DE0584F1AF5669400E9EB07 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7DE058501AF5669400E9EB07 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EDD2AA92024C0C33FBEBA5C9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				303F50B5E53E1C2452BA02DC /* Pods.debug.xcconfig */,
+				9C490866C0632508014D9CB2 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7DE058351AF5669400E9EB07 /* Swift-HttpRequest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7DE058551AF5669400E9EB07 /* Build configuration list for PBXNativeTarget "Swift-HttpRequest" */;
+			buildPhases = (
+				7090E3E3BACB9BCCAF37FD34 /* Check Pods Manifest.lock */,
+				7DE058321AF5669400E9EB07 /* Sources */,
+				7DE058331AF5669400E9EB07 /* Frameworks */,
+				7DE058341AF5669400E9EB07 /* Resources */,
+				22080011F70A55AE425E28EB /* Embed Pods Frameworks */,
+				4C0502469ED055DFBCE762D5 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Swift-HttpRequest";
+			productName = "Swift-HttpRequest";
+			productReference = 7DE058361AF5669400E9EB07 /* Swift-HttpRequest.app */;
+			productType = "com.apple.product-type.application";
+		};
+		7DE0584A1AF5669400E9EB07 /* Swift-HttpRequestTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7DE058581AF5669400E9EB07 /* Build configuration list for PBXNativeTarget "Swift-HttpRequestTests" */;
+			buildPhases = (
+				7DE058471AF5669400E9EB07 /* Sources */,
+				7DE058481AF5669400E9EB07 /* Frameworks */,
+				7DE058491AF5669400E9EB07 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7DE0584D1AF5669400E9EB07 /* PBXTargetDependency */,
+			);
+			name = "Swift-HttpRequestTests";
+			productName = "Swift-HttpRequestTests";
+			productReference = 7DE0584B1AF5669400E9EB07 /* Swift-HttpRequestTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7DE0582E1AF5669400E9EB07 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0630;
+				ORGANIZATIONNAME = GameBegin;
+				TargetAttributes = {
+					7DE058351AF5669400E9EB07 = {
+						CreatedOnToolsVersion = 6.3;
+					};
+					7DE0584A1AF5669400E9EB07 = {
+						CreatedOnToolsVersion = 6.3;
+						TestTargetID = 7DE058351AF5669400E9EB07;
+					};
+				};
+			};
+			buildConfigurationList = 7DE058311AF5669400E9EB07 /* Build configuration list for PBXProject "Swift-HttpRequest" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 7DE0582D1AF5669400E9EB07;
+			productRefGroup = 7DE058371AF5669400E9EB07 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7DE058351AF5669400E9EB07 /* Swift-HttpRequest */,
+				7DE0584A1AF5669400E9EB07 /* Swift-HttpRequestTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7DE058341AF5669400E9EB07 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7DDAD3201AF70BC600DF581A /* Default-568h@2x.png in Resources */,
+				7DE058431AF5669400E9EB07 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7DE058491AF5669400E9EB07 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		22080011F70A55AE425E28EB /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4C0502469ED055DFBCE762D5 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7090E3E3BACB9BCCAF37FD34 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7DE058321AF5669400E9EB07 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7DCAE65C1AF875950050FB18 /* ViewController.swift in Sources */,
+				7DDAD3361AF75E0C00DF581A /* HttpLoginRequest.swift in Sources */,
+				7DDAD3331AF7573E00DF581A /* HttpCommunication.swift in Sources */,
+				7DDAD32B1AF713DD00DF581A /* HttpConnect.swift in Sources */,
+				7DCAE65B1AF875950050FB18 /* AppDelegate.swift in Sources */,
+				7DDAD3311AF7566100DF581A /* HttpLoginInfo.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7DE058471AF5669400E9EB07 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7DE058521AF5669400E9EB07 /* Swift_HttpRequestTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7DE0584D1AF5669400E9EB07 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7DE058351AF5669400E9EB07 /* Swift-HttpRequest */;
+			targetProxy = 7DE0584C1AF5669400E9EB07 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		7DE058531AF5669400E9EB07 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7DE058541AF5669400E9EB07 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7DE058561AF5669400E9EB07 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 303F50B5E53E1C2452BA02DC /* Pods.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: GameSky Global Pte Ltd (76946FKV6R)";
+				INFOPLIST_FILE = "Swift-HttpRequest/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "bb46de18-44b2-4f95-9783-77a60136dd65";
+			};
+			name = Debug;
+		};
+		7DE058571AF5669400E9EB07 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9C490866C0632508014D9CB2 /* Pods.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: GameSky Global Pte Ltd (76946FKV6R)";
+				INFOPLIST_FILE = "Swift-HttpRequest/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "bb46de18-44b2-4f95-9783-77a60136dd65";
+			};
+			name = Release;
+		};
+		7DE058591AF5669400E9EB07 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Swift-HttpRequestTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Swift-HttpRequest.app/Swift-HttpRequest";
+			};
+			name = Debug;
+		};
+		7DE0585A1AF5669400E9EB07 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Swift-HttpRequestTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Swift-HttpRequest.app/Swift-HttpRequest";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7DE058311AF5669400E9EB07 /* Build configuration list for PBXProject "Swift-HttpRequest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7DE058531AF5669400E9EB07 /* Debug */,
+				7DE058541AF5669400E9EB07 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7DE058551AF5669400E9EB07 /* Build configuration list for PBXNativeTarget "Swift-HttpRequest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7DE058561AF5669400E9EB07 /* Debug */,
+				7DE058571AF5669400E9EB07 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7DE058581AF5669400E9EB07 /* Build configuration list for PBXNativeTarget "Swift-HttpRequestTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7DE058591AF5669400E9EB07 /* Debug */,
+				7DE0585A1AF5669400E9EB07 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7DE0582E1AF5669400E9EB07 /* Project object */;
+}

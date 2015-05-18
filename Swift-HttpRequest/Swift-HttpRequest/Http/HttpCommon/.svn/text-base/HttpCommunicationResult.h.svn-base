@@ -1,0 +1,33 @@
+//
+//  HttpCommunicationResult.h
+//  HttpConection
+//
+//  Created by yanwsh on 1/4/14.
+//  Copyright (c) 2014 ict. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+#import "HttpCommuncationType.h"
+
+#import "NavigationBar.h"
+
+////----请求结果的返回类型
+@interface HttpCommunicationResult : NSObject
+
+@property (nonatomic, retain) NSString *sysResultInfo;//返回的信息 描述
+@property (nonatomic, retain) NSObject *retrunData;//返回的数据
+@property (nonatomic,assign) Boolean isSuccess;//返回结果是双值的时候使用
+
+@end
+
+
+////----返回结果协议
+@protocol CommunicationDelegate<NSObject>
+
+@optional
+////----请求的两个可选协议函数，用于在具体请求中响应的请求结果
+
+-(void)didLoadFinishWithObject:(CommunicationType)cType result:(HttpCommunicationResult*)result;
+
+-(void)didFailWithError:(CommunicationType)cType result:(HttpCommunicationResult*)result error:(NSError*)error;
+@end

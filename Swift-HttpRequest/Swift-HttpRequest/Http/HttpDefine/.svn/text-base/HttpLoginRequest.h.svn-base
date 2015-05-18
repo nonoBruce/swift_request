@@ -1,0 +1,18 @@
+//
+//  HttpLoginRequest.h
+//  HttpDemo
+//
+//  Created by yanwen on 6/5/13.
+//  Copyright (c) 2013 __MyCompanyName__. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+#import "HttpConnect.h"
+
+@interface HttpLoginRequest : HttpConnect{
+    
+}
+
+- (NSMutableDictionary *)requestParam:(NSDictionary *)dic;
+
+@end

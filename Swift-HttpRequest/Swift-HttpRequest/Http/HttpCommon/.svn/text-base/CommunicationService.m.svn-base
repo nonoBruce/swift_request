@@ -1,0 +1,40 @@
+//
+//  HttpCommunicationService.m
+//  HttpConection
+//
+//  Created by yanwsh on 1/4/14.
+//  Copyright (c) 2014 ict. All rights reserved.
+//
+
+#import "CommunicationService.h"
+
+
+@implementation CommunicationService
+
+@synthesize httpCommuncate=_httpCommuncate;
+
+-(id)init{
+    if(self=[super init]){
+        _httpCommuncate = [[HttpCommuncate alloc] init];
+    }
+    return  self;
+}
+
+-(void)dealloc{
+    if(_httpCommuncate!=nil){
+        [_httpCommuncate release];
+    }
+    [super dealloc];
+}
+
+static CommunicationService *mInstance = nil;
++ (CommunicationService*)shareInstance{
+    if(mInstance==nil){
+        mInstance = [[CommunicationService alloc] init];
+    }
+    return mInstance;
+}
++ (HttpCommuncate*) getComService{
+    return [CommunicationService shareInstance].httpCommuncate;
+}
+@end
